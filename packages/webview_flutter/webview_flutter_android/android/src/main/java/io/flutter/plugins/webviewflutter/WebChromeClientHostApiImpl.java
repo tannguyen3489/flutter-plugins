@@ -368,7 +368,7 @@ public class WebChromeClientHostApiImpl implements WebChromeClientHostApi {
 
   public boolean requestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
     if (requestCode == REQUEST_CAMERA) {
-      if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+      if (grantResults != null && grantResults.size() > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
         openCamera();
       } else {
         Toast.makeText(application, application.getString(R.string.take_pic_need_permission), Toast.LENGTH_SHORT).show();
